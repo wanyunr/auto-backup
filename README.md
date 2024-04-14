@@ -112,13 +112,13 @@
         python '/home/auto-backup/gd_backup.py'
         ```
 
-    2. 创建系统级 cron 任务（示例：每日 4 时备份、每三天 4 时备份）
+    2. 创建系统级 cron 任务（示例：每日 4 时备份和每三天 4 时备份）
         ```
         # vim /etc/cron.d/auto-backup
 
         0 4 * * * root cd /home/auto-backup && "./run.sh" > /dev/null 2>&1
 
-        0 4 */3 * * root cd /root/auto-backup && "./run.sh" > /dev/null 2>&1
+        0 4 */3 * * root cd /home/auto-backup && "./run.sh" >> /home/auto-backup/log/auto-backup.log 2>&1
         ```
     3. 重载 cron
         ```
